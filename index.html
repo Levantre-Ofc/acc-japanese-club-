@@ -1,1 +1,364 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <!-- Zoom disable on mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ACC JAPANESE CLUB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-red: #e62e2e;
+      --dark-red: #c41e1e;
+      --light-red: #ff5a5a;
+      --dark-bg: #0a0a0a;
+      --text-white: #ffffff;
+      --text-light: #f0f0f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--dark-bg);
+      color: var(--text-white);
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
 
+    .grid {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 0, 0, 0.08) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: moveGrid 6s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveGrid {
+      from { background-position: 0 0; }
+      to { background-position: 60px 60px; }
+    }
+
+    .japanese-pattern {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: 
+        radial-gradient(circle, rgba(230, 46, 46, 0.03) 2px, transparent 2px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+
+    .header {
+      position: relative;
+      width: 100%;
+      padding: 40px 20px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-circle {
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 60px rgba(230, 46, 46, 0.3);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 25px;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .logo-circle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.5), 0 0 80px rgba(230, 46, 46, 0.4);
+    }
+
+    .logo-circle img {
+      width: 75%;
+      height: auto;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+    }
+
+    .site-title {
+      font-size: 42px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .site-title .red {
+      color: var(--primary-red);
+      text-shadow: 0 0 15px rgba(230, 46, 46, 0.7);
+    }
+
+    .site-subtitle {
+      font-size: 18px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      color: var(--text-light);
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px 0;
+      z-index: 1;
+      position: relative;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      background-color: var(--primary-red);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 45, 45, 0.4);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover {
+      background-color: var(--dark-red);
+      box-shadow: 0 0 25px rgba(255, 45, 45, 0.7);
+      transform: translateY(-3px);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary-red);
+      color: var(--text-white);
+      box-shadow: 0 0 15px rgba(255, 45, 45, 0.3);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(230, 46, 46, 0.1);
+    }
+
+    .content {
+      width: 100%;
+      max-width: 900px;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-red);
+      box-shadow: 0 0 10px var(--primary-red);
+    }
+
+    .about-text {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      text-align: justify;
+      padding: 0 20px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: var(--primary-red);
+    }
+
+    .feature-title {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--text-white);
+    }
+
+    .feature-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-light);
+    }
+
+    .footer {
+      width: 100%;
+      padding: 40px 20px;
+      background: rgba(10, 10, 10, 0.8);
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-text {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .site-title {
+        font-size: 32px;
+      }
+      .logo-circle {
+        width: 150px;
+        height: 150px;
+      }
+      .button-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 220px;
+      }
+      .about-text {
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid"></div>
+  <div class="japanese-pattern"></div>
+
+  <div class="header">
+    <div class="logo-circle">
+      <img src="https://via.placeholder.com/150/FFFFFF/000000?text=ACC" alt="ACC Japanese Club Logo">
+    </div>
+
+    <h1 class="site-title">
+      ACC <span class="red">JAPANESE</span> CLUB
+    </h1>
+
+    <div class="button-container">
+      <a href="social.html" class="btn btn-outline">SOCIAL MEDIA</a>
+      <a href="social.html" class="btn btn-outline">SOCIAL MEDIA</a>
+      <a href="social.html" class="btn btn-outline">REGISTER NOW</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2 class="section-title">ABOUT OUR CLUB</h2>
+    <p class="about-text">
+      The ACC Japanese Club is a club for students interested in the Japanese language, culture, traditions, and modern Japanese lifestyle. Whether you are a beginner in learning Japanese or someone who already has a good command of the language
+
+    </p>
+
+    <div class="features">
+      <a href="memories.html" class="feature-card">
+        <div class="feature-icon">🗾</div>
+        <h3 class="feature-title">MEMORIES</h3>
+      </a>
+
+      <a href="committee.html" class="feature-card">
+        <div class="feature-icon">🗾</div>
+        <h3 class="feature-title">COMMITTEE</h3>
+      </a>
+
+      <a href="main-committee.html" class="feature-card">
+        <div class="feature-icon">🗾</div>
+        <h3 class="feature-title">MAIN COMMITTEE</h3>
+      </a>
+
+      <a href="achievements.html" class="feature-card">
+        <div class="feature-icon">🗾</div>
+        <h3 class="feature-title">OUR ACHIEVEMENTS</h3>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="footer-text">ACC JAPANESE CLUB &copy; 2025</p>
+  </div>
+
+</body>
+</html>
